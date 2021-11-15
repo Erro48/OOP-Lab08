@@ -72,6 +72,8 @@ public class MiniGUI {
          * on screen. Results may vary, but it is generally the best choice.
          */
         frame.setLocationByPlatform(true);
+        
+        frame.pack();
         /*
          * OK, ready to pull the frame onscreen
          */
