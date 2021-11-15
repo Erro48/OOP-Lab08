@@ -68,6 +68,14 @@ public class BadIOGUI {
                 }
             }
         });
+        
+        read.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                // TODO Auto-generated method stub
+                System.out.println("Ciao");
+            }
+        });
     }
 
     private void display() {
