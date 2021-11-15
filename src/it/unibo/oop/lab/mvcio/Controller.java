@@ -61,7 +61,7 @@ public class Controller {
      *      the path of the current file
      */
     public String getPath() {
-        return System.getProperty("user.home") + System.getProperty("file.separetor") + this.getCurrentFile();
+        return System.getProperty("user.home") + System.getProperty("file.separator") + this.getCurrentFile();
     }
     /**
      * Writes in the current file the input given.
