@@ -1,9 +1,13 @@
 package it.unibo.oop.lab.mvcio;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.border.Border;
 
 /**
  * A very simple program using a graphical interface.
@@ -51,6 +55,11 @@ public final class SimpleGUI {
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
         frame.setSize(sw / 2, sh / 2);
+        final JTextArea textArea = new JTextArea();
+        final JButton save = new JButton("Save");
+        save.setLayout(new BorderLayout());
+        frame.add(textArea);
+        frame.add(save, BorderLayout.SOUTH);
         /*
          * Instead of appearing at (0,0), upper left corner of the screen, this
          * flag makes the OS window manager take care of the default positioning
