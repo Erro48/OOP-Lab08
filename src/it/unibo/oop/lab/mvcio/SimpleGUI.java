@@ -67,10 +67,11 @@ public final class SimpleGUI {
          * on screen. Results may vary, but it is generally the best choice.
          */
         frame.setLocationByPlatform(true);
+        frame.setVisible(true);
     }
     
     public static void main(final String[] args) {
-        new SimpleGUI().display();
+        new SimpleGUI();
     }
 
 }
