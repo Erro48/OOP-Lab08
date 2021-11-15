@@ -1,5 +1,10 @@
 package it.unibo.oop.lab.mvcio;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.NoSuchElementException;
+
 /**
  * 
  */
@@ -27,5 +32,47 @@ public class Controller {
      * System.getProperty("file.separator"). The combined use of those methods leads
      * to a software that runs correctly on every platform.
      */
-
+    private String currentFile;
+    /*
+     * METHODS
+     */
+    /**
+     * Set a file as current file.
+     * 
+     * @param filename
+     *              the file to be set as current
+     */
+    public void setCurrentFile(final String filename) {
+        this.currentFile = filename;
+    }
+    /**
+     * Returns the current file.
+     * 
+     * @return
+     *      the current file
+     */
+    public String getCurrentFile() {
+        return this.currentFile;
+    }
+    /**
+     * Returns the path of the current file.
+     * 
+     * @return
+     *      the path of the current file
+     */
+    public String getPath() {
+        return System.getProperty("user.home") + System.getProperty("file.separetor") + this.getCurrentFile();
+    }
+    /**
+     * Writes in the current file the input given.
+     * 
+     * @param text
+     *          The input which has to be written in the current file
+     * @throws IOException
+     */
+    public void write(final String text) throws IOException {
+        final BufferedWriter writer = new BufferedWriter(new FileWriter(this.getPath()));
+        writer.append(text);
+        writer.close();
+    }
 }
