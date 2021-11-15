@@ -3,9 +3,15 @@ package it.unibo.oop.lab.mvcio;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
@@ -61,6 +67,22 @@ public final class SimpleGUI {
         save.setLayout(new BorderLayout());
         frame.add(textArea);
         frame.add(save, BorderLayout.SOUTH);
+        /*
+         * Handlers
+         */
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                final Controller controller = new Controller();
+                controller.setCurrentFile("output.txt");
+                try {
+                    controller.write(textArea.getText());
+                } catch (IOException e1) {
+                    JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
+                    e1.printStackTrace();
+                }
+            }
+        });
         /*
          * Instead of appearing at (0,0), upper left corner of the screen, this
          * flag makes the OS window manager take care of the default positioning
