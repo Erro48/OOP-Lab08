@@ -5,7 +5,10 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Random;
 
@@ -72,8 +75,15 @@ public class BadIOGUI {
         read.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                // TODO Auto-generated method stub
-                System.out.println("Ciao");
+                try {
+                    final BufferedReader reader = new BufferedReader(new FileReader(PATH));
+                    System.out.println(reader.readLine());
+                } catch (FileNotFoundException e1) {
+                    JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
     }
