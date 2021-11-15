@@ -55,6 +55,7 @@ public final class SimpleGUI {
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
         frame.setSize(sw / 2, sh / 2);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         final JTextArea textArea = new JTextArea();
         final JButton save = new JButton("Save");
         save.setLayout(new BorderLayout());
