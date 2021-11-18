@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -91,7 +92,14 @@ public final class SimpleGUIWithFileChooser {
         browse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                
+                JFileChooser fileChooser = new JFileChooser();
+                try {
+                    if (fileChooser.showSaveDialog(browseTextField) == JFileChooser.APPROVE_OPTION) {
+                        controller.setCurrentFile(fileChooser.getName(fileChooser.getSelectedFile()));
+                    }
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(fileChooser, e1);
+                }
             }
         });
         frame.setLocationByPlatform(true);
