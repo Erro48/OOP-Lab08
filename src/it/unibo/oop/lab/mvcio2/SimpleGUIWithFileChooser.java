@@ -51,6 +51,7 @@ public final class SimpleGUIWithFileChooser {
     private final JFrame frame = new JFrame();
 
     public SimpleGUIWithFileChooser() {
+        final Controller controller = new Controller();
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
@@ -60,6 +61,8 @@ public final class SimpleGUIWithFileChooser {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
         final JTextField browseTextField = new JTextField();
+        browseTextField.setText(controller.getPath());
+        browseTextField.setEditable(false);
         final JButton browse = new JButton("Browse");
         browse.setLayout(new BorderLayout());
         canvas.add(browseTextField, BorderLayout.CENTER);
@@ -76,7 +79,6 @@ public final class SimpleGUIWithFileChooser {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                final Controller controller = new Controller();
                 controller.setCurrentFile("output.txt");
                 try {
                     controller.write(textArea.getText());
