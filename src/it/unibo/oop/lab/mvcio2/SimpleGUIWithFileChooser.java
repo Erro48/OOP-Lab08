@@ -96,6 +96,7 @@ public final class SimpleGUIWithFileChooser {
                 try {
                     if (fileChooser.showSaveDialog(browseTextField) == JFileChooser.APPROVE_OPTION) {
                         controller.setCurrentFile(fileChooser.getName(fileChooser.getSelectedFile()));
+                        browseTextField.setText(controller.getPath());
                     }
                 } catch (Exception e1) {
                     JOptionPane.showMessageDialog(fileChooser, e1);
