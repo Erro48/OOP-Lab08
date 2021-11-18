@@ -62,8 +62,8 @@ public final class SimpleGUIWithFileChooser {
         final JTextField browseTextField = new JTextField();
         final JButton browse = new JButton("Browse");
         browse.setLayout(new BorderLayout());
-        canvas.add(browseTextField);
-        canvas.add(browse, BorderLayout.EAST);
+        canvas.add(browseTextField, BorderLayout.CENTER);
+        canvas.add(browse, BorderLayout.LINE_END);
         final JTextArea textArea = new JTextArea();
         final JButton save = new JButton("Save");
         save.setLayout(new BorderLayout());
