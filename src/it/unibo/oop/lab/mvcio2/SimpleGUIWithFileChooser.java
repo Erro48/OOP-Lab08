@@ -52,6 +52,7 @@ public final class SimpleGUIWithFileChooser {
 
     public SimpleGUIWithFileChooser() {
         final Controller controller = new Controller();
+        controller.setCurrentFile("output.txt");
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
@@ -79,7 +80,6 @@ public final class SimpleGUIWithFileChooser {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                controller.setCurrentFile("output.txt");
                 try {
                     controller.write(textArea.getText());
                 } catch (IOException e1) {
