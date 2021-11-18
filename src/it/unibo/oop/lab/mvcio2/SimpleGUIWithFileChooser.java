@@ -88,6 +88,12 @@ public final class SimpleGUIWithFileChooser {
                 }
             }
         });
+        browse.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                
+            }
+        });
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
     }
