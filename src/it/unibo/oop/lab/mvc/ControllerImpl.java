@@ -16,7 +16,10 @@ public class ControllerImpl implements Controller {
     }
 
     @Override
-    public void setString(String str) {
+    public void setString(final String str) throws IllegalStateException {
+        if (str == null) {
+            throw new IllegalStateException();
+        }
         this.currentString = str;
         this.history.add(str);
     }
