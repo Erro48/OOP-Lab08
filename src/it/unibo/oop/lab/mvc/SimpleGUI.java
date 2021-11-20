@@ -53,6 +53,7 @@ public final class SimpleGUI {
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
         frame.setSize(sw / 2, sh / 2);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         /*
          * Instead of appearing at (0,0), upper left corner of the screen, this
@@ -60,6 +61,7 @@ public final class SimpleGUI {
          * on screen. Results may vary, but it is generally the best choice.
          */
         frame.setLocationByPlatform(true);
+        frame.setVisible(true);
     }
     
     public static void main(String[] args) {
