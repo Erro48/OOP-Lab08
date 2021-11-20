@@ -5,9 +5,9 @@
 
 Solve the exercises in order:
 
-1. simplegui
-2. iogui
-3. mvcio
-4. mvcio2
-5. mvc
-6. advanced
+1. simplegui -- N
+2. iogui -- N
+3. mvcio -- N
+4. mvcio2 -- N
+5. mvc -- X
+6. advanced -- X
