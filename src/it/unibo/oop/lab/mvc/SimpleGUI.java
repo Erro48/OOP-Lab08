@@ -3,6 +3,8 @@ package it.unibo.oop.lab.mvc;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -77,6 +79,19 @@ public final class SimpleGUI {
         canvas.add(output, BorderLayout.CENTER);
         canvas.add(buttonsCanvas, BorderLayout.SOUTH);
         frame.add(canvas);
+        print.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                final Controller controller = new ControllerImpl();
+                try {
+                    controller.setString(inputString.getText().isEmpty() ? null : inputString.getText());
+                    controller.printString();
+                } catch (IllegalStateException e1) {
+                    System.out.println("Can't pass an empty string");
+                }
+                
+            }
+        });
         /*
          * Instead of appearing at (0,0), upper left corner of the screen, this
          * flag makes the OS window manager take care of the default positioning
