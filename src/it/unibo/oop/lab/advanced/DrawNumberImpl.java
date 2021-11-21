@@ -28,6 +28,14 @@ public final class DrawNumberImpl implements DrawNumber {
         this.attempts = attempts;
         this.reset();
     }
+    
+    public DrawNumberImpl(final String configFileName) {
+        ConfigFileReader configReader = new ConfigFileReader(configFileName);
+        this.min = configReader.getMin();
+        this.max = configReader.getMax();
+        this.attempts = configReader.getAttempts();
+        this.reset();
+    }
 
     @Override
     public void reset() {
