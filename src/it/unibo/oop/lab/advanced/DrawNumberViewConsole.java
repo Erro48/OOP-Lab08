@@ -1,41 +1,37 @@
 package it.unibo.oop.lab.advanced;
 
 public class DrawNumberViewConsole implements DrawNumberView {
-
+    
+    private DrawNumberViewObserver observer;
+    
     @Override
     public void setObserver(DrawNumberViewObserver observer) {
-        // TODO Auto-generated method stub
-
+        this.observer = observer;
     }
 
     @Override
     public void start() {
-        // TODO Auto-generated method stub
-
+        observer.newAttempt(1);
     }
 
     @Override
     public void numberIncorrect() {
-        // TODO Auto-generated method stub
-
+        System.err.println("Incorrect number... try again");
     }
 
     @Override
-    public void result(DrawResult res) {
-        // TODO Auto-generated method stub
-
+    public void result(final DrawResult res) {
+        System.out.println(res.getDescription());
     }
 
     @Override
     public void limitsReached() {
-        // TODO Auto-generated method stub
-
+        System.out.println("You lost");
     }
 
     @Override
-    public void displayError(String message) {
-        // TODO Auto-generated method stub
-
+    public void displayError(final String message) {
+        System.err.println(message);
     }
 
 }
