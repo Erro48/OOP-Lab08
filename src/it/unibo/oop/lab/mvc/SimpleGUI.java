@@ -71,7 +71,7 @@ public final class SimpleGUI {
         print.setLayout(new BorderLayout());
         final JButton history = new JButton("Show History");
         history.setLayout(new BorderLayout());
-        buttonsCanvas.add(print, BorderLayout.WEST);
+        buttonsCanvas.add(print, BorderLayout.CENTER);
         buttonsCanvas.add(history, BorderLayout.EAST);
         canvas.add(inputString, BorderLayout.NORTH);
         canvas.add(output, BorderLayout.CENTER);
