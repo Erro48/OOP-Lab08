@@ -1,9 +1,14 @@
 package it.unibo.oop.lab.mvc;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  * A very simple program using a graphical interface.
@@ -54,7 +59,24 @@ public final class SimpleGUI {
         final int sh = (int) screen.getHeight();
         frame.setSize(sw / 2, sh / 2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        final JPanel canvas = new JPanel();
+        canvas.setLayout(new BorderLayout());
+        JTextField inputString = new JTextField();
+        inputString.setLayout(new BorderLayout());
+        JTextArea output = new JTextArea();
+        output.setLayout(new BorderLayout());
+        final JPanel buttonsCanvas = new JPanel();
+        buttonsCanvas.setLayout(new BorderLayout());
+        final JButton print = new JButton("Print");
+        print.setLayout(new BorderLayout());
+        final JButton history = new JButton("Show History");
+        history.setLayout(new BorderLayout());
+        buttonsCanvas.add(print, BorderLayout.WEST);
+        buttonsCanvas.add(history, BorderLayout.EAST);
+        canvas.add(inputString, BorderLayout.NORTH);
+        canvas.add(output, BorderLayout.CENTER);
+        canvas.add(buttonsCanvas, BorderLayout.SOUTH);
+        frame.add(canvas);
         /*
          * Instead of appearing at (0,0), upper left corner of the screen, this
          * flag makes the OS window manager take care of the default positioning
