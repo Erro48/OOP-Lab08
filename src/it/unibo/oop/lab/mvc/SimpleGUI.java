@@ -56,6 +56,7 @@ public final class SimpleGUI {
          * MUCH better than manually specify the size of a window in pixel: it
          * takes into account the current resolution.
          */
+        final Controller controller = new ControllerImpl();
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
@@ -82,7 +83,6 @@ public final class SimpleGUI {
         print.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                final Controller controller = new ControllerImpl();
                 try {
                     controller.setString(inputString.getText().isEmpty() ? null : inputString.getText());
                     controller.printString();
@@ -90,6 +90,14 @@ public final class SimpleGUI {
                     System.out.println("Can't pass an empty string");
                 }
                 
+            }
+        });
+        history.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                for (int i = 0; i < controller.getHistory().size(); i++) {
+                    output.append(i + ") " + controller.getHistory().get(i) + "\n");
+                }
             }
         });
         /*
