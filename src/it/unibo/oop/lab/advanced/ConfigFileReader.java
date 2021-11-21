@@ -17,9 +17,9 @@ public class ConfigFileReader {
         int attempts = 0;
         try {
             var reader = new BufferedReader(new FileReader(configFileName));
-            min = Integer.parseInt(reader.readLine().split(":")[1]);
-            max = Integer.parseInt(reader.readLine().split(":")[1]);
-            attempts = Integer.parseInt(reader.readLine().split(":")[1]);
+            min = Integer.parseInt(reader.readLine().split(": ")[1]);
+            max = Integer.parseInt(reader.readLine().split(": ")[1]);
+            attempts = Integer.parseInt(reader.readLine().split(": ")[1]);
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
         } catch (IOException e2) {
