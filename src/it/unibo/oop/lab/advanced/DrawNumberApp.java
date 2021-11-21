@@ -1,5 +1,7 @@
 package it.unibo.oop.lab.advanced;
 
+import java.io.File;
+
 /**
  */
 public final class DrawNumberApp implements DrawNumberViewObserver {
@@ -7,6 +9,12 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
     private static final int MIN = 0;
     private static final int MAX = 100;
     private static final int ATTEMPTS = 10;
+    private static final String CONFIG_FILE = System.getProperty("user.home")
+                                              + File.separator + "eclipse-workspaces"
+                                              + File.separator + "unibo"
+                                              + File.separator + "lab08"
+                                              + File.separator + "res"
+                                              + File.separator + "config.yml";
     private final DrawNumber model;
     private final DrawNumberView view;
 
@@ -14,7 +22,8 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
      * 
      */
     public DrawNumberApp() {
-        this.model = new DrawNumberImpl(MIN, MAX, ATTEMPTS);
+        //this.model = new DrawNumberImpl(MIN, MAX, ATTEMPTS);
+        this.model = new DrawNumberImpl(CONFIG_FILE);
         this.view = new DrawNumberViewImpl();
         this.view.setObserver(this);
         this.view.start();
