@@ -10,4 +10,4 @@ Solve the exercises in order:
 3. mvcio -- N
 4. mvcio2 -- N
 5. mvc -- N
-6. advanced -- X
+6. advanced -- S
