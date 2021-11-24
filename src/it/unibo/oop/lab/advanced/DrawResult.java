@@ -16,7 +16,11 @@ public enum DrawResult {
     /**
      * Correct attempt.
      */
-    YOU_WON("You won");
+    YOU_WON("You won"),
+    /**
+     * No attempts left.
+     */
+    YOU_LOST("You lost");
 
     private final String message;
 
