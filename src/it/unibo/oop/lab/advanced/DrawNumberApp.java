@@ -5,7 +5,8 @@ import java.io.File;
 /**
  */
 public final class DrawNumberApp implements DrawNumberViewObserver {
-
+    
+    private static final int N_VIEWS = 4;
     private static final int MIN = 0;
     private static final int MAX = 100;
     private static final int ATTEMPTS = 10;
@@ -16,7 +17,7 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
                                               + File.separator + "res"
                                               + File.separator + "config.yml";
     private final DrawNumber model;
-    private final DrawNumberView view;
+    private final DrawNumberView[] views;
 
     /**
      * 
@@ -24,22 +25,31 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
     public DrawNumberApp() {
         //this.model = new DrawNumberImpl(MIN, MAX, ATTEMPTS);
         this.model = new DrawNumberImpl(CONFIG_FILE);
-        //this.view = new DrawNumberViewImpl();
+        this.views = new DrawNumberView[N_VIEWS];
+
+        this.views[0] = new DrawNumberViewImpl();
+        this.views[1] = new DrawNumberViewImpl();
+        this.views[2] = new DrawNumberViewConsole();
+        this.views[3] = new DrawNumberViewLogfile();
         
-        this.view = new DrawNumberViewConsole();
-        this.view.setObserver(this);
-        this.view.start();
+        for (final var view : this.views) {
+            view.setObserver(this);
+            view.start();
+        }
     }
 
     @Override
     public void newAttempt(final int n) {
-        try {
-            final DrawResult result = model.attempt(n);
-            this.view.result(result);
-        } catch (IllegalArgumentException e) {
-            this.view.numberIncorrect();
-        } catch (AttemptsLimitReachedException e) {
-            view.limitsReached();
+        
+        for (DrawNumberView view : this.views) {
+            try {
+                final DrawResult result = model.attempt(n);
+                    view.result(result);
+            } catch (IllegalArgumentException e) {
+                view.numberIncorrect();
+            } catch (AttemptsLimitReachedException e) {
+                view.limitsReached();
+            }
         }
     }
 
