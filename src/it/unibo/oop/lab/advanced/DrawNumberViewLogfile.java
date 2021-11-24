@@ -26,11 +26,6 @@ public class DrawNumberViewLogfile implements DrawNumberView {
 
     }
 
-    @Override
-    public void limitsReached() {
-        // TODO Auto-generated method stub
-
-    }
 
     @Override
     public void displayError(String message) {

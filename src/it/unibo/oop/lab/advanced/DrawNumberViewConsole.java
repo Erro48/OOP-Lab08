@@ -24,11 +24,6 @@ public class DrawNumberViewConsole implements DrawNumberView {
     }
 
     @Override
-    public void limitsReached() {
-        System.out.println("You lost");
-    }
-
-    @Override
     public void displayError(final String message) {
         System.err.println(message);
     }

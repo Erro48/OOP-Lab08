@@ -24,11 +24,6 @@ public interface DrawNumberView {
      * @param res the result of the last draw
      */
     void result(DrawResult res);
-
-    /**
-     * Tells the user that the match is lost.
-     */
-    void limitsReached();
     
     /**
      * @param message the error message to display
