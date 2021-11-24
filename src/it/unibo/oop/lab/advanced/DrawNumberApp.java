@@ -1,6 +1,7 @@
 package it.unibo.oop.lab.advanced;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,12 +14,14 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
     private static final int MIN = 0;
     private static final int MAX = 100;
     private static final int ATTEMPTS = 10;
-    private static final String CONFIG_FILE = System.getProperty("user.home")
-                                              + File.separator + "eclipse-workspaces"
-                                              + File.separator + "unibo"
-                                              + File.separator + "lab08"
-                                              + File.separator + "res"
-                                              + File.separator + "config.yml";
+    private static final String DIR_PATH = System.getProperty("user.home")
+            + File.separator + "eclipse-workspaces"
+            + File.separator + "unibo"
+            + File.separator + "lab08"
+            + File.separator;
+    private static final String CONFIG_FILE = DIR_PATH + "res" + File.separator + "config.yml";
+    private static final String LOG_FILE = DIR_PATH + "res" + File.separator + "log.txt";
+    
     private final DrawNumber model;
     private final List<DrawNumberView> views;
 
@@ -33,7 +36,11 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
         this.views.add(new DrawNumberViewImpl());
         this.views.add(new DrawNumberViewImpl());
         this.views.add(new DrawNumberViewConsole());
-        this.views.add(new DrawNumberViewLogfile());
+        try {
+            this.views.add(new DrawNumberViewLogfile(LOG_FILE));
+        } catch (IOException e) {
+            System.err.println("Can't open file " + LOG_FILE);
+        }
         
         for (final var view : this.views) {
             view.setObserver(this);
