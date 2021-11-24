@@ -44,9 +44,9 @@ public final class DrawNumberImpl implements DrawNumber {
     }
 
     @Override
-    public DrawResult attempt(final int n) throws AttemptsLimitReachedException {
+    public DrawResult attempt(final int n) {
         if (this.remainingAttempts <= 0) {
-            throw new AttemptsLimitReachedException();
+            return DrawResult.YOU_LOST;
         }
         if (n < this.min || n > this.max) {
             throw new IllegalArgumentException("The number is outside boundaries");
