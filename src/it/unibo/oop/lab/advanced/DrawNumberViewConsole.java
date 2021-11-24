@@ -11,7 +11,6 @@ public class DrawNumberViewConsole implements DrawNumberView {
 
     @Override
     public void start() {
-        observer.newAttempt(1);
     }
 
     @Override
