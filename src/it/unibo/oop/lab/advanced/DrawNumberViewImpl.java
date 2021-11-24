@@ -105,6 +105,9 @@ public final class DrawNumberViewImpl implements DrawNumberView {
         case YOU_WON:
             plainMessage(res.getDescription() + NEW_GAME);
             break;
+        case YOU_LOST:
+            plainMessage(res.getDescription() + NEW_GAME);
+            break;
         default:
             throw new IllegalStateException("Unexpected result: " + res);
         }
