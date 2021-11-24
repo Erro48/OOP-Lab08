@@ -37,7 +37,7 @@ public class DrawNumberViewLogfile implements DrawNumberView {
 
     @Override
     public void result(final DrawResult res) {
-        this.out.println(res);
+        this.out.println(res.getDescription());
     }
 
 
