@@ -1,6 +1,9 @@
 package it.unibo.oop.lab.advanced;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  */
@@ -17,7 +20,7 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
                                               + File.separator + "res"
                                               + File.separator + "config.yml";
     private final DrawNumber model;
-    private final DrawNumberView[] views;
+    private final List<DrawNumberView> views;
 
     /**
      * 
@@ -25,12 +28,12 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
     public DrawNumberApp() {
         //this.model = new DrawNumberImpl(MIN, MAX, ATTEMPTS);
         this.model = new DrawNumberImpl(CONFIG_FILE);
-        this.views = new DrawNumberView[N_VIEWS];
+        this.views = new ArrayList<>();
 
-        this.views[0] = new DrawNumberViewImpl();
-        this.views[1] = new DrawNumberViewImpl();
-        this.views[2] = new DrawNumberViewConsole();
-        this.views[3] = new DrawNumberViewLogfile();
+        this.views.add(new DrawNumberViewImpl());
+        this.views.add(new DrawNumberViewImpl());
+        this.views.add(new DrawNumberViewConsole());
+        this.views.add(new DrawNumberViewLogfile());
         
         for (final var view : this.views) {
             view.setObserver(this);
@@ -40,15 +43,15 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
 
     @Override
     public void newAttempt(final int n) {
-        
-        for (DrawNumberView view : this.views) {
-            try {
-                final DrawResult result = model.attempt(n);
-                    view.result(result);
-            } catch (IllegalArgumentException e) {
+        try {
+            final DrawResult result = model.attempt(n);
+            for (DrawNumberView view : this.views) {
+                view.result(result);
+            }
+        } catch (IllegalArgumentException e) {
+            // TODO Auto-generated catch block
+            for (DrawNumberView view : this.views) {
                 view.numberIncorrect();
-            } catch (AttemptsLimitReachedException e) {
-                view.limitsReached();
             }
         }
     }
